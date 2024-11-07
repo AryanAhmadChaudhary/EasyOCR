@@ -9,7 +9,6 @@ class EasyOCRDemo:
         self.extracted_texts = []
     
     def read_image(self):
-        """Reads the image from the specified path."""
         self.image = cv2.imread(self.image_path)
     
     def detect_text(self):
@@ -25,7 +24,7 @@ class EasyOCRDemo:
             bottom_right = tuple(detection[0][2])
             text = detection[1]
 
-            # Draw rectangle and put text
+            """Draw rectangle and put text"""
             self.image = cv2.rectangle(self.image, top_left, bottom_right, (0, 255, 0), 3)
             self.image = cv2.putText(self.image, text, top_left, font, 0.5, (0, 0, 255), 2, cv2.LINE_AA)
     
@@ -42,7 +41,6 @@ class EasyOCRDemo:
             print(text)
 
     def run(self):
-        """Runs the full OCR demo workflow."""
         self.read_image()
         self.detect_text()
         self.annotate_image()
